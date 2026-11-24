@@ -33,6 +33,10 @@ def main() -> int:
     if not line.strip():
         print("error: entry line must not be only whitespace", file=sys.stderr)
         return 1
+    if line != line.strip():
+        print("error: entry line must not have leading or trailing whitespace",
+              file=sys.stderr)
+        return 1
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8", newline="") as f:
